@@ -4,3 +4,6 @@ scipy
 matplotlib
 seaborn
 yfinance
+python-dotenv
+google-generativeai
+streamlit
