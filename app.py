@@ -398,7 +398,7 @@ if options_formula == "Black & Scholes":
           
         
         if options_strategy=="Bull Call Spread" or options_strategy=="Bear Put Spread":
-            opt2 = st.radio('Options',['call','put'],horizontal=True)
+            opt2 = st.radio('Options',['call','put'],horizontal=True,key = 'spread')
             K2 = st.number_input("Strike Price 2",value = 0)
             T = st.number_input("Number of Days left to expiry",value = 0,key = "K2")
             premium2 = black_scholes(S, K2, T/365, 0.071,annul_vol, opt2)
