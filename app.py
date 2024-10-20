@@ -368,6 +368,8 @@ if options_formula == "Black & Scholes":
                 st.write(ind_symbol)
                 st.write(symbol)
                 st.write(ind_symbol[symbol])
+                data = yf.download(ind_symbol[symbol.upper().replace(" ",'')],'2019-1-1', datetime.date.today())
+                st.write(data)
                 st.write(f"Cannot get info on {symbol}. Try removing spaces in the symbol or use the chatbot")
                 st.write("CAUTION : Chatbot may give wrong symbol")
                 
