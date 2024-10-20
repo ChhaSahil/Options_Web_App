@@ -345,7 +345,9 @@ S=0.0
 if options_formula == "Black & Scholes":
     symbol = st.text_input("Symbol of the Underlying(Equity) - ",placeholder="Enter the NSE symbol of the equity")
     if symbol:
-        if ".NS" not in symbol:
+        if symbol in ind_symbol.keys():
+            symbol_NS = ind_symbol[symbol]
+        elif ".NS" not in symbol:
            symbol_NS = symbol+".NS"
         else:
            symbol_NS = symbol
