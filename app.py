@@ -373,7 +373,7 @@ if options_formula == "Black & Scholes":
                 # st.write(data)
                 # st.write(annul_vol)
                 tk = yf.Ticker(ind_symbol[symbol.upper().replace(" ",'')])
-                S = tk.history("1d")
+                S = tk.history("1d")['Close']
                 st.write(S)
                 st.write(f"Cannot get info on {symbol}. Try removing spaces in the symbol or use the chatbot")
                 st.write("CAUTION : Chatbot may give wrong symbol")
