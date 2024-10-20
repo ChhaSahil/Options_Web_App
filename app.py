@@ -47,6 +47,8 @@ def volatility(symbol, start_date, end_date):
     return annual_volatility
 @st.cache_data
 def black_scholes(S, K, T, r, sigma, options = 'call'):
+    if K==0:
+        return -0.0
     d1 = (math.log(S/K)+(r+0.5*sigma**0.5)*T)/(sigma*np.sqrt(T))
     d2 = d1 - sigma*np.sqrt(T)
 
@@ -58,6 +60,8 @@ def black_scholes(S, K, T, r, sigma, options = 'call'):
         return "Please choose either call or put"
 
 def binomial_options_pricing(S, K, T, r, sigma, n, options = 'call'):
+    if K==0:
+        return -0.0
     dt = T/n
     u = np.exp(sigma*np.sqrt(dt))
     d = 1/u
@@ -78,6 +82,8 @@ def binomial_options_pricing(S, K, T, r, sigma, n, options = 'call'):
     return options_tree[0,0]
 # st.set_option('deprecation.showPyplotGlobalUse', False)
 def monte_carlo_simulations(S,K,T,r,vol,N,M,options):
+    if K==0:
+        return -0.0
     dt = T/N
     nudt = (r - 0.5*vol**2)*dt
     volsdt = vol*np.sqrt(dt)
@@ -341,6 +347,7 @@ with st.sidebar.container():
 st.text(f"Calculate Options Price Using {options_formula}")
 display_volatility = False
 #----------------------------------Black & Scholes--------------------------------------------
+
 S=0.0
 if options_formula == "Black & Scholes":
     symbol = st.text_input("Symbol of the Underlying(Equity) - ",placeholder="Enter the NSE symbol of the equity")
