@@ -372,8 +372,9 @@ if options_formula == "Black & Scholes":
                 # annul_vol = volatility(ind_symbol[symbol.upper().replace(" ",'')], '2019-1-1',datetime.date.today())
                 # st.write(data)
                 # st.write(annul_vol)
-                tk = yf.Ticker(ind_symbol[symbol.upper().replace(" ",'')])
-                S = tk.history("1d")['Close']
+                data = yf.download(ind_symbol[symbol.upper().replace(" ",'')],'2019-1-1', datetime.date.today())
+                close = data['Close'].to_list()
+                S = close[-1]
                 st.write(S)
                 st.write(f"Cannot get info on {symbol}. Try removing spaces in the symbol or use the chatbot")
                 st.write("CAUTION : Chatbot may give wrong symbol")
